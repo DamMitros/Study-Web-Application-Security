@@ -16,6 +16,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - run: cd lab4/new-app
     - name: Use Node.js 22.x
       uses: actions/setup-node@v4
       with:
