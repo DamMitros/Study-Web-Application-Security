@@ -16,13 +16,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - run: cd lab4/new-app
     - name: Use Node.js 22.x
       uses: actions/setup-node@v4
       with:
         node-version: 22.x
         cache: 'npm'
+    - name: Install dependencies
     - run: npm i
+    - working-directory: lab4/new-app
+    
+    - name: Run Snyk Test
     - run: npx snyk test
+    - working-directory: lab4/new-app
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
